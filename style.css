@@ -101,7 +101,7 @@ header img{
     right: 0;
 }
 .skill {
-    border: 1px solid #141414;
+    border: 1px solid #000000;
     display: block;
     border-radius: 6px;
     text-align: center;
@@ -109,8 +109,13 @@ header img{
     padding: 5px;
     width: 2in;
     font-size: 40px;
-    box-shadow: 0 3px 10px #141414;
+    box-shadow: 0 3px 10px #000000;
     color: white;
+    background-color: #141414;
+}
+.skill:hover{
+    background-color: #000000;
+    border: 1px solid #8CFD0B;
 }
 .skills_sec h6 {
     align-items: center;
@@ -122,17 +127,6 @@ header img{
 .skill img {
     height: 35px;
     align-items: center;
-}
-
-/*Gradient Reverse*/
-#gradient_r{
-    background-image: linear-gradient(to bottom right,#335f01, #141414);
-    position: absolute;
-    top: 222.5%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    height: 127.5%;
 }
 
 /*Projects*/
@@ -157,6 +151,9 @@ header img{
     box-shadow: 0 3px 10px #141414;
     color: white;
 }
+.projects:hover{
+    border: 1px solid #8CFD0B;
+}
 .projects img {
     height: 370px;
     align-items: center;
@@ -173,7 +170,6 @@ header img{
 * {
     box-sizing: border-box;
     }
-    
     input[type=text], select, textarea {
     width: 100%;
     padding: 12px;
@@ -182,7 +178,6 @@ header img{
     margin-bottom: 16px;
     resize: vertical;
     }
-    
     input[type=submit] {
     background-color: #141414;
     color: white;
@@ -190,23 +185,19 @@ header img{
     border: none; 
     cursor: pointer;
     }
-    
     input[type=submit]:hover {
     background-color: #000000;
     }
-    
     .container {
     border-radius: 5px;
     padding: 10px;
     }
-    
     .column {
     float: left;
     width: 50%;
     margin-top: 6px;
     padding: 20px;
     }
-
     .column img{
         width: 70%;
         height: 496px;
@@ -237,14 +228,12 @@ bottom: 0;
 width: 100%;
 height: 100%;
 }
-
 #particles {
 background: #000000;
 position: absolute;
 right: 0.05%;
 height: 100%;
 }
-
 #hexagonGrid {
 position: absolute;
 top: 10; 
@@ -254,7 +243,6 @@ bottom: 0;
 width: 100%;
 height: 100%;
 overflow: hidden;
-
 .row {
     display: inline-flex;
     margin-top: -32px;
@@ -263,14 +251,12 @@ overflow: hidden;
     &:nth-child(even) {
     margin-left: 2px;
     }
-    
     .hexagon {
     position: relative;
     width: 100px; 
     height: 110px;
     margin: 4px 2px;
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%); 
-    
     &::before {
         content: '';
         position: absolute;
@@ -280,7 +266,6 @@ overflow: hidden;
         opacity: 0.95;
         transition: 1s;
     }
-    
     &::after {
         content: '';
         position: absolute;
@@ -291,14 +276,12 @@ overflow: hidden;
         background: #141414;
         clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
     }
-    
     &:hover {
         &::before {
         background-color: #8CFD0B;
         opacity: 1;
         transition: 0s;
         }
-        
         &::after {
         background: #000000;
         }
