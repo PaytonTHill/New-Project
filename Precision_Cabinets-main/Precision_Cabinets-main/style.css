@@ -1,0 +1,255 @@
+html{
+    scroll-behavior: smooth;    
+}    
+    body, html{
+    height: 425%;
+    display: grid;
+}
+body {
+    margin: 0;
+    overflow-y: scroll;
+    background: radial-gradient(circle at var(--x) var(--y) , #2b2d2e, #95BFDB);
+    height: 100%;
+    width: 100%;
+  > *{
+    z-index: 1;
+  }
+}
+
+.top{
+    width: 100%;
+    top: 0;
+    position: absolute;
+    height: 0.01%;
+    z-index: 0;
+}
+
+/*Navigation Bar*/
+header * {  
+    display: inline; 
+    align-content: center;
+}  
+header{  
+    background-color: #2b2d2e;
+    position: fixed;  
+    left: 0;  
+    right: 0;    
+    height: 30px;  
+    display: flex;   
+    z-index: 5;
+}  
+header ul{
+    display: block;
+    margin-left: 140px;
+    margin-top: 3px;
+}
+header li {  
+    margin: 30px;
+    text-align: center;
+}  
+header li a {  
+    color: #95BFDB;  
+    text-decoration: none;
+    font-size: 125%;
+}  
+header:hover li:hover a:hover{
+    font-size: 135%;
+    font-weight: bold;
+}
+header img{
+    height: 20px;
+    position: absolute;
+    left: 2%;
+}
+@media screen and (max-width: 600px) {
+.topnav a:not(:first-child) {display: none;}
+.topnav a.icon {
+    float: right;
+    display: block;
+}
+}
+@media screen and (max-width: 600px) {
+.topnav.responsive {position: relative;}
+.topnav.responsive a.icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+}
+}
+
+/*introduction*/
+.intro{
+    border-style: solid;
+    border-width: 4px;
+    border-color: #b2d7f0;
+    z-index: 3;
+    height: 30%;
+    width: 50%;
+    position: absolute;
+    top: 15%;
+    background-color: #141414;
+    border-radius: 130px;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+.intro h6{
+    text-align: center;
+    font-size: 300%;
+    color: #b2d7f0;
+}
+
+/*About Me*/
+.about_me{
+    width: 100%;
+    position: absolute;
+    top: 175%;
+    max-height: 25%;
+    color: #95BFDB;
+    text-align: center;
+    font-size: 145%;
+    font-style: italic;
+}
+
+/*Projects*/
+#projects{
+    width: 100%;
+    position: absolute;
+    top: 250%;
+    height: 50%;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+}
+.projects{
+    border: 3px solid #b2d7f0;
+    display: block;
+    border-radius: 6px;
+    text-align: center;
+    margin: 2.5%;
+    width: 380px;
+    height: 193px;
+    font-size: 40px;
+    box-shadow: 0 3px 10px #141414;
+    color: white;
+}
+.projects:hover{
+    border: 1px solid #b2d7f0;
+    cursor: pointer;
+}
+.projects img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    align-items: center;
+}
+
+/*slides*/
+.slide_1{
+    width: 100%;
+    top: 100%;
+    position: absolute;
+    font-weight: 900;
+    font-size: 100px;
+    background-image: url("https://github.com/PaytonTHill/Precision_Cabinets/blob/main/kitchen-1940174_1920.jpg?raw=true");
+    min-height: 50%;
+    max-height: 75%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+.slide_2{
+    width: 100%;
+    top: 200%;
+    position: absolute;
+    font-weight: 900;
+    font-size: 100px;
+    background-image: url("https://github.com/PaytonTHill/Precision_Cabinets/blob/main/kitchen-2165756_1920.jpg?raw=true");
+    min-height: 50%;
+    max-height: 75%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+.slide_3{
+    width: 100%;
+    top: 300%;
+    position: absolute;
+    font-weight: 900;
+    font-size: 100px;
+    background-image: url("https://github.com/PaytonTHill/Precision_Cabinets/blob/main/kitchen-2400367_1920.jpg?raw=true");
+    min-height: 50%;
+    max-height: 75%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 2;
+}
+
+/*Contact Me*/
+#contact_me{
+    position: absolute;
+    color: white;
+    top: 350%;
+    left: 0;
+    right: 0;
+}
+* {
+    box-sizing: border-box;
+}
+input[type=text], select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #141414;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    resize: vertical;
+}
+input[type=submit] {
+    background-color: #141414;
+    color: white;
+    padding: 12px 20px;
+    border: none; 
+    cursor: pointer;
+}
+input[type=submit]:hover {
+    background-color: #000000;
+}
+.container {
+    border-radius: 5px;
+    padding: 10px;
+}
+.column {
+    float: left;
+    width: 50%;
+    margin-top: 6px;
+    padding: 20px;
+}
+.column img{
+    width: 70%;
+    height: 496px;
+    object-fit: scale-down;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Responsive layout*/
+@media screen and (max-width: 600px) {
+.column, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+}
+}
