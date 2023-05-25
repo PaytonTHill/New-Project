@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CRUD API Example</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <h1>Login</h1>
+  <form id="login-form">
+    <input type="text" id="username" placeholder="Username" required><br>
+    <input type="password" id="password" placeholder="Password" required><br>
+    <button type="submit">Login</button>
+  </form>
+  <article class="user_pass">
+    <h2>Username= user1 Password= password1</h2>
+  </article>
+
+  <script>
+    $(document).ready(function() {
+      $('#login-form').submit(function(e) {
+        e.preventDefault();
+  
+        const username = $('#username').val();
+        const password = $('#password').val();
+  
+        // Send login request
+        $.ajax({
+          url: 'http://localhost:4000/login',
+          type: 'POST',
+          contentType: 'application/json',
+          data: JSON.stringify({ username, password }),
+          success: function(response) {
+            if (response.hasOwnProperty('error')) {
+              console.log(response.error);
+            } else {
+              console.log(response.message);
+              window.location.href = 'Portfolio.html';
+            }
+          },
+          error: function(xhr, status, error) {
+            console.log('An error occurred:', error);
+            console.log('Response:', xhr);
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
