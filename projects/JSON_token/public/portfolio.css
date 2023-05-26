@@ -40,12 +40,6 @@ body {
     font-weight: bold;
   }
   
-  header img {
-    height: 20px;
-    position: absolute;
-    right: 5%;
-  }
-  
   /* Intro */
   #intro {
     font-size: 50px;
@@ -102,6 +96,11 @@ body {
     color: white;
     width: 100%;
     padding: 10%;
+  }
+
+  #aboutme_sec img{
+    position: absolute;
+    right: 2vw;
   }
   
 /* Skills */
