@@ -70,7 +70,7 @@ body {
     right: 0;
     top: 100vh;
     width: 100%;
-    height: 285vh;
+    height: 300vh;
     background: linear-gradient(to bottom right, #141414, #8CFD0B, #8CFD0B, #141414);
     background-size: 600% 100%;
     animation: gradient 16s linear infinite;
@@ -96,6 +96,7 @@ body {
     color: white;
     width: 100%;
     padding: 10%;
+    margin-bottom: 5vh;
   }
 
   #aboutme_sec img{
@@ -113,128 +114,152 @@ body {
     top: 138.18vh;
     left: 0;
     right: 0;
+    height: 60vh;
   }
+
+#skills_sec h1{
+  position: absolute;
+  top: 0;
+  margin-bottom: 4vh;
+  color: white;
+}
   
-  .skill {
-    position: relative;
-    width: 20vw;
-    height: 20vh; /* Adjust the height as per your requirement */
-    margin: 2.5vh;
-    padding: 1.5vh;
-    border: 1px solid #000000;
-    border-radius: 6px;
-    box-shadow: 0 3px 10px #000000;
-    color: white;
-    background-color: #141414;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    transition: transform 0.5s;
-    perspective: 1000px;
-  }
-  
-  .skill:hover {
-    transform: rotateY(180deg);
-  }
-  
-  .content {
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: transform 0.5s;
-  }
-  
-  .content:hover {
-    transform: rotateY(180deg);
-  }
-  
-  .front-content,
-  .back-content {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    backface-visibility: hidden;
-  }
-  
-  .back-content {
-    transform: rotateY(180deg);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  
-  .back-content p {
-    transform: rotateY(180deg);
-  }
-  
-  .skill:hover .content {
-    transform: rotateY(180deg);
-  }
-  
-  .skill h6 {
-    margin-top: 8px;
-    margin-bottom: 5px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  .skill img {
-    height: 6vh; /* Adjust the image height as per your requirement */
-    margin-bottom: 10px;
-  }
-  
+.skill {
+  position: relative;
+  width: 20vw;
+  height: 15vh;
+  margin: 2.5vh;
+  padding: 1.5vh;
+  border: 1px solid #000000;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px #000000;
+  color: white;
+  background-color: #141414;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: transform 0.5s;
+  perspective: 1000px;
+  top: 5vh;
+  bottom: 20%;
+}
+
+.skill:hover {
+  transform: rotateY(180deg);
+}
+
+.content {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+
+.content:hover {
+  transform: rotateY(180deg);
+}
+
+.front-content,
+.back-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.back-content {
+  transform: rotateY(180deg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.back-content p {
+  transform: rotateY(180deg);
+}
+
+.skill:hover .content {
+  transform: rotateY(180deg);
+}
+
+.skill h6 {
+  margin-top: 8px;
+  margin-bottom: 5px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.skill img {
+  height: 6vh; /* Adjust the image height as per your requirement */
+  margin-bottom: 10px;
+}
+
+.projectstitle{
+  position: relative;
+  top: 200vh;
+  width: 100%;
+  align-items: center;
+}
+
+.projectstitle{
+  position: relative;
+  align-self: center;
+  text-align: center;
+  color: white;
+}
+
 /* Projects */
 #projects_sec {
-    position: absolute;
-    top: 200vh;
-    left: 0;
-    right: 0;
-    height: 75vh;
-    overflow: hidden;
+  position: absolute;
+  top: 220vh;
+  left: 0;
+  right: 0;
+  height: 75vh;
+  overflow: hidden;
+  align-items: center;
+}
+
+.slideshow {
+  display: flex;
+  width: 300%; 
+  animation: slide 30s linear infinite; 
+  height: 100%;
+}
+
+.slide {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #141414; 
+  border-radius: 6px;
+}
+
+.slide img {
+  max-height: 100%;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 5px;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateX(0);
   }
-  
-  .slideshow {
-    display: flex;
-    width: 300%; 
-    animation: slide 30s linear infinite; 
-    height: 100%;
+  100% {
+    transform: translateX(-66.66%); /* Slide to -66.66% to create a continuous loop */
   }
-  
-  .slide {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #141414; 
-    border-radius: 6px;
-  }
-  
-  .slide img {
-    max-height: 100%;
-    max-width: 100%;
-    object-fit: contain;
-    border-radius: 5px;
-  }
-  
-  @keyframes slide {
-    0% {
-      transform: translateX(0);
-    }
-    100% {
-      transform: translateX(-66.66%); /* Slide to -66.66% to create a continuous loop */
-    }
-  }
-    
+}
   
  /* Contact */
 #contact {
     position: absolute;
     color: white;
-    top: 285.18vh;
+    top: 300vh;
     left: 0;
     right: 0;
   }
