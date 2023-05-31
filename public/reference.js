@@ -4,6 +4,13 @@ function Reference() {
   const [content, setContent] = React.useState('');
   const [references, setReferences] = React.useState([]);
 
+  React.useEffect(() => {
+    const storedReferences = localStorage.getItem('references');
+    if (storedReferences) {
+      setReferences(JSON.parse(storedReferences));
+    }
+  }, []);
+
   function handleSubmit(e) {
     e.preventDefault();
     if (name && email && content) {
@@ -17,6 +24,8 @@ function Reference() {
       setName('');
       setEmail('');
       setContent('');
+
+      localStorage.setItem('references', JSON.stringify([...references, newReference]));
     }
   }
 
@@ -71,6 +80,4 @@ function Reference() {
   );
 }
 
-const ReferenceComponent = Reference();
-
-ReactDOM.render(ReferenceComponent, document.getElementById('references'));
+ReactDOM.render(<Reference />, document.getElementById('references'));
