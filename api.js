@@ -12,7 +12,7 @@ let users = [
   { id: 2, username: 'user2', password: 'password2' }
 ];
 
-// Serve the HTML file directly
+// Serve the HTML files directly
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', (req, res) => {
@@ -33,8 +33,8 @@ app.post('/login', (req, res) => {
   res.json({ message: 'Login successful' });
 });
 
-// Route handler for serving Portfolio.html
 app.get('/Portfolio.html', (req, res) => {
+  // Send the portfolio.html file as the response
   res.sendFile(path.join(__dirname, 'public', 'Portfolio.html'));
 });
 
