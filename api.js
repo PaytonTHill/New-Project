@@ -33,6 +33,11 @@ app.post('/login', (req, res) => {
   res.json({ message: 'Login successful' });
 });
 
+// Route handler for serving Portfolio.html
+app.get('/Portfolio.html', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'Portfolio.html'));
+});
+
 // Protected routes
 app.all('/items*', (req, res, next) => {
   // Perform authentication check here
