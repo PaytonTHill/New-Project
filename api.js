@@ -33,6 +33,7 @@ app.post('/login', (req, res) => {
   res.json({ message: 'Login successful' });
 });
 
+
 app.get('/Portfolio.html', (req, res) => {
   // Send the portfolio.html file as the response
   res.sendFile(path.join(__dirname, 'public', 'Portfolio.html'));
@@ -56,6 +57,6 @@ app.all('/items*', (req, res, next) => {
 });
 
 // Start the server
-app.listen(4000, () => {
-  console.log('Server started on port 4000');
+app.listen(80, () => {
+  console.log('Server started on port 80');
 });
