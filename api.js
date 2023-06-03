@@ -2,10 +2,26 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
+const mysql = require('mysql');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
+
+const connection = mysql.createConnection({
+  host: 'localhost', // Replace with the MySQL server host
+  user: 'phpmyadmin_user', // Replace with your MySQL username
+  password: 'your_password', // Replace with your MySQL password
+  database: 'phpmyadmin_db', // Replace with your MySQL database name
+});
+
+connection.connect((error) => {
+  if (error) {
+    console.error('Error connecting to MySQL:', error);
+  } else {
+    console.log('Connected to MySQL database');
+  }
+});
 
 let users = [
   { id: 1, username: 'user1', password: 'password1' },
@@ -33,7 +49,6 @@ app.post('/login', (req, res) => {
   res.json({ message: 'Login successful' });
 });
 
-
 app.get('/Portfolio.html', (req, res) => {
   // Send the portfolio.html file as the response
   res.sendFile(path.join(__dirname, 'public', 'Portfolio.html'));
@@ -54,6 +69,17 @@ app.all('/items*', (req, res, next) => {
   // You can add your own JWT verification logic here
 
   next();
+});
+
+// Example route for database interaction
+app.get('/data', (req, res) => {
+  connection.query('SELECT * FROM user_references', (error, results) => {
+    if (error) {
+      console.error('Error executing database query:', error);
+      return res.status(500).json({ error: 'Internal Server Error' });
+    }
+    res.json(results);
+  });
 });
 
 // Start the server
