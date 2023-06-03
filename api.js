@@ -15,7 +15,7 @@ let users = [
 // Serve the HTML files directly
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
+app.get('/login', (req, res) => {
   // Send the login.html file as the response
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
 });
