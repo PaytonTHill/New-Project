@@ -1,3 +1,12 @@
+const mysql = require('mysql');
+
+const connection = mysql.createConnection({
+  host: 'localhost', // Replace with the MySQL server host
+  user: '', // No username
+  password: '', // No password
+  database: 'referencedb', // Replace with your MySQL database name
+});
+
 function Reference() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
@@ -5,27 +14,40 @@ function Reference() {
   const [references, setReferences] = React.useState([]);
 
   React.useEffect(() => {
-    const storedReferences = localStorage.getItem('references');
-    if (storedReferences) {
-      setReferences(JSON.parse(storedReferences));
-    }
+    fetchReferences();
   }, []);
+
+  function fetchReferences() {
+    connection.query('SELECT * FROM reference_table', (error, results) => {
+      if (error) {
+        console.error('Error executing database query:', error);
+        return;
+      }
+      setReferences(results);
+    });
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     if (name && email && content) {
       const newReference = {
-        id: Math.random().toString(36).substring(7),
         name,
         email,
-        content,
+        reference_content: content, // Use 'reference_content' as the column name for the reference content
       };
-      setReferences([...references, newReference]);
+
+      connection.query('INSERT INTO reference_table SET ?', newReference, (error, result) => {
+        if (error) {
+          console.error('Error executing database query:', error);
+          return;
+        }
+        console.log('Reference inserted successfully');
+        fetchReferences(); // Fetch references again to update the list
+      });
+
       setName('');
       setEmail('');
       setContent('');
-
-      localStorage.setItem('references', JSON.stringify([...references, newReference]));
     }
   }
 
@@ -72,7 +94,7 @@ function Reference() {
               <h3>{reference.name}</h3>
               <p>{reference.email}</p>
             </div>
-            <p>{reference.content}</p>
+            <p>{reference.reference_content}</p>
           </div>
         ))}
       </div>

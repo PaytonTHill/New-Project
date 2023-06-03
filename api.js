@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const connection = mysql.createConnection({
-  host: 'localhost', // Replace with the MySQL server host
-  user: 'phpmyadmin_user', // Replace with your MySQL username
-  password: 'your_password', // Replace with your MySQL password
-  database: 'phpmyadmin_db', // Replace with your MySQL database name
+  host: 'localhost', // MySQL server host
+  user: '', // MySQL username (leave empty for no username)
+  password: '', // MySQL password (leave empty for no password)
+  database: 'referencedb', // MySQL database name
 });
 
 connection.connect((error) => {
@@ -71,9 +71,8 @@ app.all('/items*', (req, res, next) => {
   next();
 });
 
-// Example route for database interaction
 app.get('/data', (req, res) => {
-  connection.query('SELECT * FROM user_references', (error, results) => {
+  connection.query('SELECT * FROM reference_table', (error, results) => {
     if (error) {
       console.error('Error executing database query:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
