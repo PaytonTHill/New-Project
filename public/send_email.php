@@ -4,12 +4,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $firstName = $_POST["firstname"];
   $lastName = $_POST["lastname"];
   $subject = $_POST["subject"];
+  $message = $_POST["message"];
 
   // Compose the email message
-  $message = "First Name: $firstName\n";
-  $message .= "Last Name: $lastName\n";
-  $message .= "Email: $email\n";
-  $message .= "Subject: $subject\n";
+  $messageBody = "First Name: $firstName\n";
+  $messageBody .= "Last Name: $lastName\n";
+  $messageBody .= "Email: $email\n";
+  $messageBody .= "Subject: $subject\n";
+  $messageBody .= "Message: $message\n";
 
   // Set the recipient email address
   $to = "payton.slim@gmail.com";
@@ -22,10 +24,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $headers .= "Reply-To: $email\r\n";
 
   // Send the email
-  mail($to, $emailSubject, $message, $headers);
-
-  // Redirect back to the contact page after sending the email
-  header("Location: index.html#contact");
-  exit;
+  if (mail($to, $emailSubject, $messageBody, $headers)) {
+    // Email sent successfully
+    header("Location: index.html#contact");
+    exit;
+  } else {
+    // Error occurred while sending the email
+    $errorMessage = error_get_last()["message"];
+    echo "Failed to send email. Error: $errorMessage";
+  }
 }
 ?>
