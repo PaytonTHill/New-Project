@@ -57,6 +57,6 @@ app.all('/items*', (req, res, next) => {
 });
 
 // Start the server
-app.listen(80, () => {
-  console.log('Server started on port 80');
+app.listen(3000, () => {
+  console.log('Server started on port 3000');
 });
