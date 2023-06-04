@@ -37,7 +37,7 @@ function Reference() {
 
   function fetchReferences() {
     console.log('Fetching references...');
-    fetch('../api/references')
+    fetch('/home/ubuntu/Portfolio/api.js/references')
       .then(response => response.json())
       .then(data => {
         setReferences(data);
