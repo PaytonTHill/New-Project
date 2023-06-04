@@ -13,6 +13,8 @@ app.use('/reference.js', (req, res, next) => {
   next();
 });
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 app.get('/reference.js', (req, res) => {
   res.sendFile(path.join(__dirname, 'public', 'reference.js'));
 });
@@ -69,9 +71,6 @@ app.post('/api/addReference', (req, res) => {
     }
   );
 });
-
-// Serve the HTML files directly
-app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/login', (req, res) => {
   // Send the login.html file as the response

@@ -11,7 +11,7 @@ function Reference() {
       const newReference = {
         name,
         email,
-        reference_content: content, // Use 'reference_content' as the column name for the reference content
+        reference_content: content,
       };
       fetch('/api/addReference', {
         method: 'POST',
