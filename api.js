@@ -40,7 +40,8 @@ let users = [
   { id: 2, username: 'user2', password: 'password2' }
 ];
 
-app.get('/home/ubuntu/Portfolio/api.js/references', (req, res) => {
+app.get('/api/references', (req, res) => {
+  console.log('API: GET request received at /api/references');
   connection.query('SELECT * FROM references_table', (error, results) => {
     if (error) {
       console.error('Error fetching references:', error);
@@ -49,7 +50,6 @@ app.get('/home/ubuntu/Portfolio/api.js/references', (req, res) => {
       res.json(results);
     }
   });
-  console.log('GET request received at /api/references');
 });
 
 app.post('/api/addReference', (req, res) => {
