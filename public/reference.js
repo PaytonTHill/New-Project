@@ -101,5 +101,5 @@ function Reference() {
   );
 }
 
-// Render the Reference component
-ReactDOM.render(<Reference />, document.getElementById('references'));
+ReactDOM.render(<React.Fragment><Reference /></React.Fragment>, document.getElementById('references'));
+
