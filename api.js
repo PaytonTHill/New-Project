@@ -9,10 +9,10 @@ app.use(bodyParser.json());
 app.use(cors());
 
 const connection = mysql.createConnection({
-  host: 'localhost', // MySQL server host
-  user: 'root', // MySQL username (leave empty for no username)
-  password: '', // MySQL password (leave empty for no password)
-  database: 'referencedb', // MySQL database name
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'referencedb',
 });
 
 connection.connect((error) => {
@@ -28,6 +28,17 @@ let users = [
   { id: 1, username: 'user1', password: 'password1' },
   { id: 2, username: 'user2', password: 'password2' }
 ];
+
+app.get('/api/references', (req, res) => {
+  connection.query('SELECT * FROM references', (error, results) => {
+    if (error) {
+      console.error('Error fetching references:', error);
+      res.status(500).json({ error: 'Failed to fetch references' });
+    } else {
+      res.json(results);
+    }
+  });
+});
 
 app.post('/api/addReference', (req, res) => {
   const { name, email, reference_content } = req.body;
@@ -88,18 +99,6 @@ app.all('/items*', (req, res, next) => {
   // You can add your own JWT verification logic here
 
   next();
-});
-
-app.get('/api/references', (req, res) => {
-  // Fetch all references from the database
-  connection.query('SELECT * FROM references', (error, results) => {
-    if (error) {
-      console.error('Error fetching references:', error);
-      res.status(500).json({ error: 'Failed to fetch references' });
-    } else {
-      res.json(results);
-    }
-  });
 });
 
 // Start the server
