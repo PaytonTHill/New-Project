@@ -23,10 +23,29 @@ connection.connect((error) => {
   }
 });
 
+// Define users array for JSON authentication
 let users = [
   { id: 1, username: 'user1', password: 'password1' },
   { id: 2, username: 'user2', password: 'password2' }
 ];
+
+app.post('/api/addReference', (req, res) => {
+  const { name, email, reference_content } = req.body;
+
+  connection.query(
+    'INSERT INTO references (name, email, reference_content) VALUES (?, ?, ?)',
+    [name, email, reference_content],
+    (error, results) => {
+      if (error) {
+        console.error('Error adding reference:', error);
+        res.status(500).json({ error: 'Failed to add reference' });
+      } else {
+        console.log('Reference added successfully');
+        res.json({ success: true });
+      }
+    }
+  );
+});
 
 // Serve the HTML files directly
 app.use(express.static(path.join(__dirname, 'public')));
@@ -71,13 +90,15 @@ app.all('/items*', (req, res, next) => {
   next();
 });
 
-app.get('/data', (req, res) => {
-  connection.query('SELECT * FROM reference_table', (error, results) => {
+app.get('/api/references', (req, res) => {
+  // Fetch all references from the database
+  connection.query('SELECT * FROM references', (error, results) => {
     if (error) {
-      console.error('Error executing database query:', error);
-      return res.status(500).json({ error: 'Internal Server Error' });
+      console.error('Error fetching references:', error);
+      res.status(500).json({ error: 'Failed to fetch references' });
+    } else {
+      res.json(results);
     }
-    res.json(results);
   });
 });
 
