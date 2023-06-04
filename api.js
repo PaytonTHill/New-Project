@@ -8,6 +8,11 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
+app.use('/reference.js', (req, res, next) => {
+  res.setHeader('Cache-Control', 'no-store');
+  next();
+});
+
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
