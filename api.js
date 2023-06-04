@@ -10,7 +10,7 @@ app.use(cors());
 
 const connection = mysql.createConnection({
   host: 'localhost', // MySQL server host
-  user: '', // MySQL username (leave empty for no username)
+  user: 'root', // MySQL username (leave empty for no username)
   password: '', // MySQL password (leave empty for no password)
   database: 'referencedb', // MySQL database name
 });
