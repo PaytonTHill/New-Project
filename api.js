@@ -47,6 +47,7 @@ app.get('/api/references', (req, res) => {
       res.json(results);
     }
   });
+  console.log('GET request received at /api/references');
 });
 
 app.post('/api/addReference', (req, res) => {
