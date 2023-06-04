@@ -13,6 +13,10 @@ app.use('/reference.js', (req, res, next) => {
   next();
 });
 
+app.get('/reference.js', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'reference.js'));
+});
+
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
