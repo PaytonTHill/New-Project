@@ -1,0 +1,105 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  background: linear-gradient(to bottom right, #141414, #8CFD0B, #8CFD0B, #141414);
+  animation: gradient 16s linear infinite;
+  animation-direction: alternate;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0%
+  }
+  100% {
+    background-position: 100%
+  }
+}
+
+h1 {
+  text-align: center;
+  margin: 2%;
+  color: #333;
+}
+
+.container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+form {
+  display: inline-block;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #4CAF50;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:active {
+  background-color: #3c903c;
+}
+
+#reference-list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reference {
+  width: calc(100% - 10px);
+  height: 200px; /* Adjust the height as needed */
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  overflow-wrap: break-word;
+}
+
+
+.reference-header {
+  margin-bottom: 10px;
+}
+
+.reference-header h3,
+.reference-header p {
+  margin: 0;
+}
+
+.reference p {
+  margin: 0;
+}
