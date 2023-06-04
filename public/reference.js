@@ -13,7 +13,7 @@ function Reference() {
         email,
         reference_content: content,
       };
-      fetch('/api/addReference', {
+      fetch('../api/addReference', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -37,7 +37,7 @@ function Reference() {
 
   function fetchReferences() {
     console.log('Fetching references...');
-    fetch('/api/references')
+    fetch('../api/references')
       .then(response => response.json())
       .then(data => {
         setReferences(data);
