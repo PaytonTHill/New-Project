@@ -47,6 +47,8 @@ app.get('/api/references', (req, res) => {
 
 app.post('/api/addReference', (req, res) => {
   const { name, email, reference_content } = req.body;
+  console.log('Received request to /api/addReference');
+  console.log('Request body', req.body);
 
   connection.query(
     'INSERT INTO references_table (name, email, reference_content) VALUES (?, ?, ?)',
