@@ -1,5 +1,3 @@
-
-
 // Reference component
 function Reference() {
   const [name, setName] = React.useState('');
