@@ -1,9 +1,10 @@
-// Reference component
+import React, { useState, useEffect } from 'react';
+
 function Reference() {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [content, setContent] = React.useState('');
-  const [references, setReferences] = React.useState([]);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [content, setContent] = useState('');
+  const [references, setReferences] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -47,7 +48,7 @@ function Reference() {
       });
   }
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetchReferences();
   }, []);
 
@@ -102,5 +103,4 @@ function Reference() {
   );
 }
 
-ReactDOM.render(<React.Fragment><Reference /></React.Fragment>, document.getElementById('references'));
-
+export default Reference;
