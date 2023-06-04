@@ -293,16 +293,12 @@ input[type=submit]:hover {
 }
 
 .column {
-  float: left;
+  float: none;
   width: 50%;
   margin-top: 1.5vh;
   padding: 2vh;
-}
-
-.column img {
-  width: 70%;
-  height: 496px;
-  object-fit: scale-down;
+  margin-left: 25%;
+  margin-right: 25%;
 }
 
 .row:after {

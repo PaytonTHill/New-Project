@@ -1,105 +1,55 @@
+const express = require('express');
 const mysql = require('mysql');
+
+const app = express();
+const port = 3000;
 
 const connection = mysql.createConnection({
   host: 'localhost', // Replace with the MySQL server host
-  user: '', // No username
-  password: '', // No password
+  user: 'root', // Use 'root' as the MySQL username
+  password: '', // No password for the root user
   database: 'referencedb', // Replace with your MySQL database name
 });
 
-function Reference() {
-  const [name, setName] = React.useState('');
-  const [email, setEmail] = React.useState('');
-  const [content, setContent] = React.useState('');
-  const [references, setReferences] = React.useState([]);
+// Serve static files from the "public" directory
+app.use(express.static('public'));
 
-  React.useEffect(() => {
-    fetchReferences();
-  }, []);
+// Parse JSON request bodies
+app.use(express.json());
 
-  function fetchReferences() {
-    connection.query('SELECT * FROM reference_table', (error, results) => {
-      if (error) {
-        console.error('Error executing database query:', error);
-        return;
-      }
-      setReferences(results);
-    });
-  }
+// Add reference route
+app.post('/api/addReference', (req, res) => {
+  const { name, email, reference_content } = req.body;
+  const newReference = {
+    name,
+    email,
+    reference_content,
+  };
 
-  function handleSubmit(e) {
-    e.preventDefault();
-    if (name && email && content) {
-      const newReference = {
-        name,
-        email,
-        reference_content: content, // Use 'reference_content' as the column name for the reference content
-      };
-
-      connection.query('INSERT INTO reference_table SET ?', newReference, (error, result) => {
-        if (error) {
-          console.error('Error executing database query:', error);
-          return;
-        }
-        console.log('Reference inserted successfully');
-        fetchReferences(); // Fetch references again to update the list
-      });
-
-      setName('');
-      setEmail('');
-      setContent('');
+  connection.query('INSERT INTO reference_table SET ?', newReference, (error, result) => {
+    if (error) {
+      console.error('Error executing database query:', error);
+      res.status(500).json({ error: 'An error occurred while adding the reference.' });
+      return;
     }
-  }
+    console.log('Reference inserted successfully');
+    res.json({ message: 'Reference added successfully.' });
+  });
+});
 
-  return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Add Reference</h2>
-        <div>
-          <label htmlFor="name">Name:</label>
-          <input
-            type="text"
-            id="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email:</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="content">Reference:</label>
-          <textarea
-            id="content"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            required
-          ></textarea>
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+// Fetch references route
+app.get('/api/references', (req, res) => {
+  connection.query('SELECT * FROM reference_table', (error, results) => {
+    if (error) {
+      console.error('Error executing database query:', error);
+      res.status(500).json({ error: 'An error occurred while fetching the references.' });
+      return;
+    }
+    res.json(results);
+  });
+});
 
-      <div id="reference-list">
-        {references.map((reference) => (
-          <div key={reference.id} className="reference">
-            <div className="reference-header">
-              <h3>{reference.name}</h3>
-              <p>{reference.email}</p>
-            </div>
-            <p>{reference.reference_content}</p>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
-ReactDOM.render(<Reference />, document.getElementById('references'));
+// Start the server
+app.listen(port, () => {
+  console.log(`Server started on port ${port}`);
+});

@@ -47,17 +47,46 @@
       e.preventDefault();
       if (name && email && content) {
         const newReference = {
-          id: Math.random().toString(36).substring(7),
           name,
           email,
-          content,
+          reference_content: content, // Use 'reference_content' as the column name for the reference content
         };
-        setReferences([...references, newReference]);
+        fetch('/api/addReference', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(newReference),
+        })
+          .then(response => response.json())
+          .then(result => {
+            console.log('Reference added successfully:', result);
+            fetchReferences();
+          })
+          .catch(error => {
+            console.error('Error adding reference:', error);
+          });
+
         setName('');
         setEmail('');
         setContent('');
       }
     }
+
+    function fetchReferences() {
+      fetch('/api/references')
+        .then(response => response.json())
+        .then(data => {
+          setReferences(data);
+        })
+        .catch(error => {
+          console.error('Error fetching references:', error);
+        });
+    }
+
+    React.useEffect(() => {
+      fetchReferences();
+    }, []);
 
     return (
       <div>
@@ -102,7 +131,7 @@
                 <h3>{reference.name}</h3>
                 <p>{reference.email}</p>
               </div>
-              <p>{reference.content}</p>
+              <p>{reference.reference_content}</p>
             </div>
           ))}
         </div>
