@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <title>Reference Page</title>
   <link rel="stylesheet" type="text/css" href="reference.css">
-  <script src="reference.js"></script>
   <script src="https://unpkg.com/react/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom/umd/react-dom.production.min.js"></script>
   <script src="https://unpkg.com/babel-standalone/babel.min.js"></script>
+  <script src="reference.js" type="text/babel"></script>
 </head>
 <body>
   <section id="intro">
@@ -16,7 +16,7 @@
   <section id="references">
     <div class="container">
       <div id="reference-list"></div>
-      <form id="reference-form" onSubmit={handleSubmit}>
+      <form id="reference-form">
         <h2>Add Reference</h2>
         <div>
           <label htmlFor="name">Name:</label>
@@ -30,7 +30,7 @@
           <label htmlFor="content">Reference:</label>
           <textarea id="content" required></textarea>
         </div>
-        <button type="submit">Submit</button>
+        <button type="submit" onClick={handleSubmit}>Submit</button>
       </form>
     </div>
   </section>
