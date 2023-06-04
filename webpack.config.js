@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './Portfolio/public/reference.js', // Update with the path to your reference.js file
+    entry: './Portfolio/public/reference.js',
   output: {
     path: path.resolve(__dirname, 'dist'), // Output directory for compiled files
     filename: 'bundle.js', // Output filename
