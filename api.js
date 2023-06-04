@@ -40,7 +40,7 @@ let users = [
   { id: 2, username: 'user2', password: 'password2' }
 ];
 
-app.get('/api/references', (req, res) => {
+app.get('/home/ubuntu/Portfolio/api.js/references', (req, res) => {
   connection.query('SELECT * FROM references_table', (error, results) => {
     if (error) {
       console.error('Error fetching references:', error);
