@@ -1,23 +1,48 @@
 const path = require('path');
 
 module.exports = {
-    entry: './Portfolio/public/reference.js',
+  mode: 'development',
+  entry: './public/reference-app/src/index.jsx',
   output: {
-    path: path.resolve(__dirname, 'dist'), // Output directory for compiled files
-    filename: 'bundle.js', // Output filename
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx']
   },
   module: {
     rules: [
       {
-        test: /\.(js|jsx)$/,
+        test: /\.jsx?$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
-        },
+          options: {
+            presets: ['@babel/preset-react']
+          }
+        }
       },
-    ],
-  },
-  resolve: {
-    extensions: ['.js', '.jsx'], // Optional: Enable importing files without specifying the file extensions
-  },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'images/'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.html$/,
+        use: 'html-loader'
+      }
+    ]
+  }
 };
+
