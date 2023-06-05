@@ -8,16 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use('/reference.js', (req, res, next) => {
-  res.setHeader('Cache-Control', 'no-store');
-  next();
-});
-
 app.use(express.static(path.join(__dirname, 'public')));
-
-app.get('/reference.js', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'reference.js'));
-});
 
 const connection = mysql.createConnection({
   host: 'localhost',
