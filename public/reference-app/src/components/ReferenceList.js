@@ -7,7 +7,7 @@ function ReferenceList() {
 
   function fetchReferences() {
     console.log('Fetching references...');
-    fetch('/api/references')
+    fetch('../api/references')
       .then(response => response.json())
       .then(data => {
         setReferences(data);
