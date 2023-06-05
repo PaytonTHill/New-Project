@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.use(express.static(path.join(__dirname, 'public', 'reference-app', 'build')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 const connection = mysql.createConnection({
   host: 'localhost',
