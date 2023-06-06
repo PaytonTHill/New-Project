@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($mail->send()) {
       // Email sent successfully
       echo '<script>alert("Email sent successfully");</script>';
-      header("Location: portfolio.html");
+      header("Location: Portfolio.html");
       exit;
     } else {
       // Error occurred while sending the email
