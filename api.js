@@ -61,7 +61,6 @@ app.post('/api/addReference', (req, res) => {
         res.status(500).json({ error: 'Failed to add reference' });
       } else {
         console.log('Reference added successfully');
-        res.set('Access-Control-Allow-Origin', 'https://reference-hak3ixy7p-paytonthill.vercel.app');
         res.json({ success: true });
       }
     }
