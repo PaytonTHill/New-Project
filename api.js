@@ -4,6 +4,12 @@ const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql');
 
+const corsOptions = {
+  origin: 'https://reference-hak3ixy7p-paytonthill.vercel.app',
+};
+
+app.use(cors(corsOptions));
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -38,6 +44,7 @@ app.get('/api/references', (req, res) => {
       console.error('Error fetching references:', error);
       res.status(500).json({ error: 'Failed to fetch references' });
     } else {
+      res.set('Access-Control-Allow-Origin', 'https://reference-hak3ixy7p-paytonthill.vercel.app');
       res.json(results);
     }
   });
