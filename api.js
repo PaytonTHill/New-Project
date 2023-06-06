@@ -34,7 +34,7 @@ let users = [
   { id: 2, username: 'user2', password: 'password2' }
 ];
 
-app.get('/api/references', (req, res) => {
+app.get('api/references', (req, res) => {
   console.log('API: GET request received at /api/references');
   connection.query('SELECT * FROM references_table', (error, results) => {
     if (error) {
