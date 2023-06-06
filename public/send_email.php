@@ -28,8 +28,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $mail->isSMTP();
     $mail->Host       = 'email-smtp.us-west-2.amazonaws.com'; // Replace with your SMTP host
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'PaytonTHill'; // Replace with your SMTP username
-    $mail->Password   = ''; // Replace with your SMTP password
+    $mail->Username   = 'AKIAXJP6EHEGPCIXR32X'; // Replace with your SMTP username
+    $mail->Password   = 'BBTbpmit4IM5Oyp/nS12EOvzeudrnrnJADcHKfjoWhsr'; // Replace with your SMTP password
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
