@@ -41,7 +41,6 @@ app.get('/api/references', (req, res) => {
       console.error('Error fetching references:', error);
       res.status(500).json({ error: 'Failed to fetch references' });
     } else {
-      res.set('Access-Control-Allow-Origin', 'https://reference-hak3ixy7p-paytonthill.vercel.app');
       res.json(results);
     }
   });
