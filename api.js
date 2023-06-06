@@ -53,7 +53,7 @@ app.post('/api/addReference', (req, res) => {
   console.log('Request body', req.body);
 
   // Generate a unique ID for the new reference
-  const referenceId = generateUniqueId();
+  const referenceId = uuidv4();
 
   connection.query(
     'INSERT INTO reference_table (id, name, email, reference_content) VALUES (?, ?, ?, ?)',
