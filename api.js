@@ -66,6 +66,24 @@ app.post('/api/addReference', (req, res) => {
   );
 });
 
+app.delete('/api/deleteReference/:id', (req, res) => {
+  const referenceId = req.params.id;
+
+  connection.query(
+    'DELETE FROM reference_table WHERE id = ?',
+    [referenceId],
+    (error, results) => {
+      if (error) {
+        console.error('Error deleting reference:', error);
+        res.status(500).json({ error: 'Failed to delete reference' });
+      } else {
+        console.log('Reference deleted successfully');
+        res.json({ success: true });
+      }
+    }
+  );
+});
+
 app.get('/login', (req, res) => {
   // Send the login.html file as the response
   res.sendFile(path.join(__dirname, 'public', 'login.html'));
@@ -107,6 +125,6 @@ app.all('/items*', (req, res, next) => {
 });
 
 // Start the server
-app.listen(3000, 'localhost' , () => {
+app.listen(3000, 'localhost', () => {
   console.log('Server started on port 3000');
 });
