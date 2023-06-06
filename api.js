@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql');
+const { v4: uuidv4 } = require('uuid');
 
 const app = express();
 const corsOptions = {
@@ -51,16 +52,19 @@ app.post('/api/addReference', (req, res) => {
   console.log('Received request to /api/addReference');
   console.log('Request body', req.body);
 
+  // Generate a unique ID for the new reference
+  const referenceId = generateUniqueId();
+
   connection.query(
-    'INSERT INTO reference_table (name, email, reference_content) VALUES (?, ?, ?)',
-    [name, email, reference_content],
+    'INSERT INTO reference_table (id, name, email, reference_content) VALUES (?, ?, ?, ?)',
+    [referenceId, name, email, reference_content],
     (error, results) => {
       if (error) {
         console.error('Error adding reference:', error);
         res.status(500).json({ error: 'Failed to add reference' });
       } else {
         console.log('Reference added successfully');
-        res.json({ success: true });
+        res.json({ success: true, id: referenceId });
       }
     }
   );
