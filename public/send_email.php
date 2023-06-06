@@ -45,12 +45,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($mail->send()) {
       // Email sent successfully
       echo '<script>
-        function showConfirmation() {
-          alert("Email sent successfully");
-        }
-        showConfirmation();
+        alert("Email sent successfully");
+        window.location.href = "Portfolio.html";
       </script>';
-      header("Location: Portfolio.html");
       exit;
     } else {
       // Error occurred while sending the email
