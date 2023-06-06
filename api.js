@@ -36,7 +36,7 @@ let users = [
 
 app.get('/api/references', (req, res) => {
   console.log('API: GET request received at /api/references');
-  connection.query('SELECT * FROM references_table', (error, results) => {
+  connection.query('SELECT * FROM reference_table', (error, results) => {
     if (error) {
       console.error('Error fetching references:', error);
       res.status(500).json({ error: 'Failed to fetch references' });
@@ -53,7 +53,7 @@ app.post('/api/addReference', (req, res) => {
   console.log('Request body', req.body);
 
   connection.query(
-    'INSERT INTO references_table (name, email, reference_content) VALUES (?, ?, ?)',
+    'INSERT INTO reference_table (name, email, reference_content) VALUES (?, ?, ?)',
     [name, email, reference_content],
     (error, results) => {
       if (error) {
