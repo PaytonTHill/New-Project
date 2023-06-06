@@ -1,16 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
-const cors = require('cors');
 const mysql = require('mysql');
 const { v4: uuidv4 } = require('uuid');
 
 const app = express();
-const corsOptions = {
-  origin: 'https://reference-hak3ixy7p-paytonthill.vercel.app',
-};
 
-app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
