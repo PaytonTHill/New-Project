@@ -4,16 +4,13 @@ const path = require('path');
 const cors = require('cors');
 const mysql = require('mysql');
 
+const app = express();
 const corsOptions = {
   origin: 'https://reference-hak3ixy7p-paytonthill.vercel.app',
 };
 
 app.use(cors(corsOptions));
-
-const app = express();
 app.use(bodyParser.json());
-app.use(cors());
-
 app.use(express.static(path.join(__dirname, 'public')));
 
 const connection = mysql.createConnection({
