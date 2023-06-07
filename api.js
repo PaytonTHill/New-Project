@@ -66,8 +66,8 @@ app.post('/api/addReference', (req, res) => {
 });
 
 app.delete('/api/deleteReference/:id', (req, res) => {
+  console.log('Deleting reference...', referenceId);
   const referenceId = req.params.id;
-  console.log('Deleting reference...', referenceId); 
 
   connection.query(
     'DELETE FROM reference_table WHERE id = ?',
