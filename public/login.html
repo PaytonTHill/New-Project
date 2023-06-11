@@ -1,29 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>JSON Example</title>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Login Page</title>
   <link rel="stylesheet" href="login.css">
 </head>
 <body>
-  <h1>Login</h1>
-  <form id="login-form" action="/login" method="POST">
-    <input type="text" id="username" placeholder="Username" required><br>
-    <input type="password" id="password" placeholder="Password" required><br>
-    <button type="submit">Login</button>
-  </form>
-  <article class="user_pass">
-    <h2>Username= user1 Password= password1</h2>
-  </article>
+  <div class="container">
+    <h1>Login</h1>
+    <form id="login-form" action="/login" method="POST">
+      <input type="text" id="username" placeholder="Username" required><br>
+      <input type="password" id="password" placeholder="Password" required><br>
+      <button type="submit">Login</button>
+    </form>
+    <article class="user_pass">
+      <h2>Username = user1, Password = password1</h2>
+    </article>
+  </div>
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function() {
       $('#login-form').submit(function(e) {
         e.preventDefault();
-  
         const username = $('#username').val();
         const password = $('#password').val();
-  
         // Send login request
         $.ajax({
           url: 'https://35.87.198.76/login',
@@ -45,7 +45,6 @@
         });
       });
     });
-  </script>  
+  </script>
 </body>
 </html>
-

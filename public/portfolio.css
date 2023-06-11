@@ -7,6 +7,11 @@ font-family: sans-serif;
 scroll-behavior: smooth;
 }
 
+#Overall_Contaier{
+  display: flex;
+  flex-wrap: wrap;
+}
+
 /* Navigation Bar */
 header * {
 display: inline;
@@ -70,7 +75,7 @@ left: 0;
 right: 0;
 top: 100vh;
 width: 100%;
-height: 300vh;
+height: 330vh;
 background: linear-gradient(to bottom right, #141414, #8CFD0B, #8CFD0B, #141414);
 background-size: 600% 100%;
 animation: gradient 16s linear infinite;
@@ -95,8 +100,17 @@ left: 0;
 right: 0;
 color: white;
 width: 100%;
-padding: 10%;
 margin-bottom: 5vh;
+height: 30vh;
+}
+
+#aboutme_sec h2{
+  position: relative;
+  top: 0;
+  margin-bottom: 4vh;
+  color: white;
+  width: 100%;
+  text-align: center;
 }
 
 /* Skills */
@@ -117,6 +131,7 @@ position: absolute;
 top: 0;
 margin-bottom: 4vh;
 color: white;
+font-size: 30px;
 }
 
 .skill {
@@ -189,22 +204,17 @@ font-weight: bold;
 }
 
 .skill img {
-height: 6vh; /* Adjust the image height as per your requirement */
+height: 6vh; 
 margin-bottom: 10px;
 }
 
 .projectstitle{
-position: relative;
+position: absolute;
 top: 200vh;
-width: 100%;
-align-items: center;
-}
-
-.projectstitle{
-position: relative;
-align-self: center;
 text-align: center;
 color: white;
+width: 90%;
+margin: 2.5%;
 }
 
 /* Projects (May remove slideshow in future) */
@@ -246,7 +256,7 @@ border-radius: 5px;
   transform: translateX(0);
 }
 100% {
-  transform: translateX(-66.66%); /* Slide to -66.66% to create a continuous loop */
+  transform: translateX(-66.66%);
 }
 }
 
