@@ -3,11 +3,13 @@ const bodyParser = require('body-parser');
 const path = require('path');
 const mysql = require('mysql');
 const { v4: uuidv4 } = require('uuid');
+const cookieParser = require('cookie-parser');
 
 const app = express();
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(cookieParser());
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -44,12 +46,18 @@ app.get('/api/references', (req, res) => {
 
 app.post('/api/addReference', (req, res) => {
   const { name, email, reference_content } = req.body;
+  const sessionId = generateSessionId();
+  const newReference = {
+    sessionId,
+  };
   console.log('Received request to /api/addReference');
   console.log('Request body', req.body);
 
+  saveReference(newReference);
   // Generate a unique ID for the new reference
   const referenceId = uuidv4();
-
+  res.cookie('sessionId', sessionId, { httpOnly: true });
+  res.status(200).json({ success: true });
   connection.query(
     'INSERT INTO reference_table (id, name, email, reference_content) VALUES (?, ?, ?, ?)',
     [referenceId, name, email, reference_content],
