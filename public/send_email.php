@@ -32,16 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   try {
     // Configure the PHPMailer object
     $mail->isSMTP();
-    $mail->Host       = 'email-smtp.us-west-2.amazonaws.com';
+    $mail->Host       = 'email-smtp.us-west-2.amazonaws.com'; 
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'AKIAXJP6EHEGPCIXR32X';
-    $mail->Password   = 'BBTbpmit4IM5Oyp/nS12EOvzeudrnrnJADcHKfjoWhsr';
+    $mail->Username   = 'AKIAXJP6EHEGPCIXR32X'; 
+    $mail->Password   = 'BBTbpmit4IM5Oyp/nS12EOvzeudrnrnJADcHKfjoWhsr'; 
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
     // Set the sender and recipient
-    $mail->setFrom($email);
-    $mail->addAddress('payton.slim@gmail.com');
+    $mail->setFrom('payton.slim@gmail.com'); 
+    $mail->addAddress('payton.slim@gmail.com'); 
 
     // Set the email subject and body
     $mail->Subject = 'New Contact Form Submission';
