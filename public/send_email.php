@@ -13,6 +13,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $subject = $_POST["subject"];
   $message = $_POST["message"];
 
+  // Validate email address
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "Invalid email address";
+    exit;
+  }
+
   // Compose the email message
   $messageBody = "First Name: $firstName\n";
   $messageBody .= "Last Name: $lastName\n";
@@ -26,16 +32,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   try {
     // Configure the PHPMailer object
     $mail->isSMTP();
-    $mail->Host       = 'email-smtp.us-west-2.amazonaws.com'; // Replace with your SMTP host
+    $mail->Host       = 'email-smtp.us-west-2.amazonaws.com';
     $mail->SMTPAuth   = true;
-    $mail->Username   = 'AKIAXJP6EHEGPCIXR32X'; // Replace with your SMTP username
-    $mail->Password   = 'BBTbpmit4IM5Oyp/nS12EOvzeudrnrnJADcHKfjoWhsr'; // Replace with your SMTP password
+    $mail->Username   = 'AKIAXJP6EHEGPCIXR32X';
+    $mail->Password   = 'BBTbpmit4IM5Oyp/nS12EOvzeudrnrnJADcHKfjoWhsr';
     $mail->SMTPSecure = 'tls';
     $mail->Port       = 587;
 
     // Set the sender and recipient
     $mail->setFrom($email);
-    $mail->addAddress('payton.slim@gmail.com'); // Replace with your email address
+    $mail->addAddress('payton.slim@gmail.com');
 
     // Set the email subject and body
     $mail->Subject = 'New Contact Form Submission';
